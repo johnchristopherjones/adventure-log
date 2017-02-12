@@ -1,0 +1,21 @@
+.fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: justify;
+  justify-content: space-between;
+  margin: 0 -0.5rem;
+  margin-top: -22px;
+}
+
+.fieldset > * {
+  flex: 1;
+  padding: 0 0.5rem;
+  height: 30px;
+  margin-top: 22px;
+}
+
+[placeholder="Class"]      { min-width: 10rem; flex-grow: 3 }
+[placeholder="Background"] { min-width: 17rem; flex-grow: 8 }
+[placeholder="Race"]       { min-width:  8rem; flex-grow: 5 }
+[placeholder="Sex"]        { min-width:  8rem; flex-grow: 3 }
+[placeholder="Alignment"]  { min-width: 10rem; flex-grow: 8 }
