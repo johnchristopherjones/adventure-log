@@ -1,21 +1,44 @@
-.fieldset {
+ul {
+  list-style: none;
+  margin: 0; padding: 0;
+  /*display: flex;*/
+}
+
+ul > li {
   display: flex;
-  flex-wrap: wrap;
-  align-items: justify;
-  justify-content: space-between;
-  margin: 0 -0.5rem;
-  margin-top: -22px;
-}
-
-.fieldset > * {
   flex: 1;
-  padding: 0 0.5rem;
-  height: 30px;
-  margin-top: 22px;
+  height: 60px;
 }
 
-[placeholder="Class"]      { min-width: 10rem; flex-grow: 3 }
-[placeholder="Background"] { min-width: 17rem; flex-grow: 8 }
-[placeholder="Race"]       { min-width:  8rem; flex-grow: 5 }
-[placeholder="Sex"]        { min-width:  8rem; flex-grow: 3 }
-[placeholder="Alignment"]  { min-width: 10rem; flex-grow: 8 }
+ul > li > md-select,
+ul > li > md-input-container {
+  min-width: 8rem;
+  width: 100%;
+  flex-basis: 115px;
+  flex: 1;
+}
+
+button {
+  flex: 0 0 40px;
+  width: auto;
+}
+
+span.md-select-placeholder {
+}
+
+span.md-floating-placeholder {
+}
+
+
+ul > li > button {
+}
+
+.fieldset > md-input-container {
+}
+
+.character  { flex-basis: 17rem; }
+.class      { flex-basis: 10rem; }
+.background { flex-basis: 17rem; }
+.race       { flex-basis:  8rem; }
+.sex        { flex-basis:  8rem; }
+.alignment  { flex-basis: 10rem; }

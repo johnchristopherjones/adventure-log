@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MdIconRegistry } from '@angular/material';
 
 import { Character, DataService } from './data.service';
+import { IconService } from './icon.service';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +12,21 @@ import { Character, DataService } from './data.service';
 })
 export class AppComponent implements OnInit {
   private characters: Character[];
+  private books = {
+    ph: true,
+    sc: true,
+    vg: true
+  };
 
-  constructor(private data: DataService) {
-    this.characters = [this.data.randomCharacter()];
+  constructor(
+    private data: DataService,
+    private icon: IconService
+  ) {
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.characters = [this.data.newCharacter()];
+  }
 
   private changeCharacter(character: Character, index: number) {
     this.characters[index] = Object.assign(this.characters[index], character);

@@ -7,6 +7,7 @@ import { MaterialModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { DemoComponent } from './demo/demo.component';
 import { DataService } from './data.service';
+import { IconService } from './icon.service';
 import { ComponentsModule } from './components/components.module';
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ComponentsModule } from './components/components.module';
     ComponentsModule,
   ],
   providers: [
-    DataService
+    DataService,
+    IconService,
   ],
   bootstrap: [AppComponent]
 })

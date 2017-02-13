@@ -1,41 +1,51 @@
-<!-- <app-demo></app-demo> -->
-
-<md-sidenav-layout [class.m2app-dark]="isDarkTheme">
-  <!--
-  <md-sidenav #sidenav mode="side" class="app-sidenav">
-    Sidenav
-  </md-sidenav> -->
-
+<md-sidenav-container>
   <md-toolbar color="primary">
     <!-- <button class="app-icon-button" (click)="sidenav.toggle()">
-      <i class="material-icons app-toolbar-menu">menu</i>
+      <md-icon class="material-icons app-toolbar-menu">menu</md-icon>
     </button> -->
 
     Character Sheet
 
     <span class="app-toolbar-filler"></span>
-    <!-- <button md-button (click)="isDarkTheme = !isDarkTheme">TOGGLE DARK THEME</button> -->
+
+    <button md-button class="app-icon-button" (click)="sidenav.toggle()">
+      <md-icon class="material-icons app-toolbar-menu">filter_list</md-icon>
+    </button>
   </md-toolbar>
 
-
   <div class="app-content">
-      <md-card *ngFor="let character of characters; let i = index">
-        <md-card-content class="fieldset">
-          <character-sheet
-            [character]="character"
-            (change)="changeCharacter($event, i)"
-          ></character-sheet>
-        </md-card-content>
+    <md-card *ngFor="let character of characters; let i = index">
+      <md-card-content class="fieldset">
+        <character-sheet [character]="character" (change)="changeCharacter($event, i)"></character-sheet>
+      </md-card-content>
 
-        <md-card-actions>
-          <button md-ripple md-raised-button color="accent"
-            (click)="changeCharacter(data.randomCharacter(), i)"
-          >REROLL</button>
-
-          <button md-ripple md-raised-button color="primary"
-            (click)="insertCharacter(i)"
-          >NEW</button>
-        </md-card-actions>
-      </md-card>
+      <md-card-actions>
+        <button md-ripple md-raised-button color="accent" (click)="changeCharacter(data.randomCharacter(), i)">REROLL</button>
+        <button md-ripple md-raised-button color="primary" (click)="insertCharacter(i)">NEW</button>
+      </md-card-actions>
+    </md-card>
   </div>
-</md-sidenav-layout>
+
+  <md-sidenav #sidenav mode="over" align="end" class="sidenav" (close)="data.setBookFilter(books)">
+    <md-toolbar color="accent">
+      Books
+      <span class="app-toolbar-filler"></span>
+      <button md-button class="app-icon-button" (click)="sidenav.toggle()">
+        <md-icon class="material-icons app-toolbar-menu">close</md-icon>
+      </button>
+    </md-toolbar>
+    <md-card>
+      <md-card-content>
+        <section>
+          <md-checkbox [(ngModel)]="books.ph">Player's Handbook</md-checkbox>
+        </section>
+        <section>
+          <md-checkbox [(ngModel)]="books.sc">Sword Coast</md-checkbox>
+        </section>
+        <section>
+          <md-checkbox [(ngModel)]="books.vg">Volo's Guide</md-checkbox>
+        </section>
+      </md-card-content>
+    </md-card>
+  </md-sidenav>
+</md-sidenav-container>
