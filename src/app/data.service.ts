@@ -121,11 +121,19 @@ export class DataService {
   }
 
   get backgrounds() {
-    return this._backgrounds.filter(b => this.bookFilter[b.source]);
+    const bgs = this._backgrounds.filter(b => this.bookFilter[b.source]);
+    bgs.sort((a, b) =>
+      a.name < b.name ? -1 :
+      a.name > b.name ? 1 : 0);
+    return bgs
   }
 
   get races() {
-    return this._races.filter(r => this.bookFilter[r.source]);
+    const rs = this._races.filter(r => this.bookFilter[r.source]);
+    rs.sort((a, b) =>
+      a.name < b.name ? -1 :
+      a.name > b.name ? 1 : 0);
+    return rs;
   }
 
   public randomCharacter() {
