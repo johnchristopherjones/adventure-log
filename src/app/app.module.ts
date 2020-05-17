@@ -26,7 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
     StoreModule.forRoot({}, {}),
-    EntityDataModule.forRoot(entityConfig),
+    // EntityDataModule.forRoot(entityConfig),
   ],
   providers: [],
   bootstrap: [AppComponent]
