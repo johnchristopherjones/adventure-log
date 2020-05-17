@@ -67,7 +67,7 @@ export class DataService {
     {name: 'Tabaxi', source: 'sc', page: undefined},
     {name: 'Triton', source: 'sc', page: undefined},
   ];
-  public dice = [2, 4, 6, 8, 10, 12, 20, 100];
+  public dice = [2, 3, 4, 6, 8, 10, 12, 20, 100];
 
   private bookFilter = {
     'ph': true,
@@ -108,6 +108,11 @@ export class DataService {
     }
   }
 
+  private compareName(a, b) {
+    return a.name < b.name ? -1 :
+      a.name > b.name ? 1 : 0;
+  }
+
   public newCharacter() {
     return {
       alignment: "",
@@ -122,17 +127,13 @@ export class DataService {
 
   get backgrounds() {
     const bgs = this._backgrounds.filter(b => this.bookFilter[b.source]);
-    bgs.sort((a, b) =>
-      a.name < b.name ? -1 :
-      a.name > b.name ? 1 : 0);
+    bgs.sort(this.compareName);
     return bgs
   }
 
   get races() {
     const rs = this._races.filter(r => this.bookFilter[r.source]);
-    rs.sort((a, b) =>
-      a.name < b.name ? -1 :
-      a.name > b.name ? 1 : 0);
+    rs.sort(this.compareName);
     return rs;
   }
 
