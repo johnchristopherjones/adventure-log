@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { EntityDataModule } from '@ngrx/data';
 import { entityConfig } from './entity-metadata';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,13 +19,14 @@ import { entityConfig } from './entity-metadata';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     CoreModule,
     AppRoutingModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
     StoreModule.forRoot({}, {}),
-    EntityDataModule.forRoot(entityConfig)
+    EntityDataModule.forRoot(entityConfig),
   ],
   providers: [],
   bootstrap: [AppComponent]
